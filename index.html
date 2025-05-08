@@ -132,11 +132,29 @@
 
   <footer>
     <h3>Join the S1RIX Crew</h3>
-    <!-- Connected to Zapier webhook -->
-    <form action="https://hooks.zapier.com/hooks/catch/22834170/2ns29qe/" method="POST">
-      <input type="email" name="email" placeholder="Enter your email" required />
+    <form id="s1rix-form">
+      <input type="email" name="email" id="email" placeholder="Enter your email" required />
       <button type="submit">Join</button>
     </form>
+    <p id="thanks-msg" style="display:none; color:#90ee90; font-size: 14px; margin-top: 10px;">
+      ✅ Thanks for joining the S1RIX Crew!
+    </p>
+    <script>
+      document.getElementById('s1rix-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        fetch('https://hooks.zapier.com/hooks/catch/22834170/2ns29qe/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({ email: email }),
+        }).then(() => {
+          document.getElementById('s1rix-form').reset();
+          document.getElementById('thanks-msg').style.display = 'block';
+        });
+      });
+    </script>
     <div class="footer-links">
       <a href="#">Shop</a>
       <a href="#">About</a>
