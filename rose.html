@@ -1,161 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>S1RIX - Rose Collection</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S1RIX - Scroll Bloom Test</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #0b0b0b;
-      color: #f3f3f3;
+      padding: 0;
+      background: #0b0b0b;
       overflow-x: hidden;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
     }
-    header {
-      background-color: #1a1a1a;
+    .section {
+      height: 200vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 20px;
-      box-shadow: 0 2px 5px rgba(255, 0, 0, 0.1);
+      justify-content: center;
       position: relative;
+      background-color: #0b0b0b;
+    }
+    .vine-container {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      z-index: 0;
+    }
+    .vine {
+      width: 100%;
+      height: auto;
+      transform-origin: top;
+    }
+    h1 {
       z-index: 2;
-    }
-    .logo img {
-      height: 100px;
-    }
-    .hero {
-      background-color: #2a0000;
-      text-align: center;
-      padding: 100px 20px;
-    }
-    .hero h1 {
       font-size: 48px;
       color: #ff4444;
-    }
-    .hero p {
-      font-size: 18px;
-      color: #ccc;
-    }
-    .garden {
-      position: relative;
-      height: 200vh;
-      background-color: #141414;
-      overflow: hidden;
-    }
-    .rose {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: url('A_digital_illustration_displays_an_interactive_scr.png') no-repeat center/contain;
-      opacity: 0;
-    }
-    .rose.r1 { top: 50%; left: 20%; }
-    .rose.r2 { top: 70%; left: 40%; }
-    .rose.r3 { top: 30%; left: 60%; }
-    .rose.r4 { top: 80%; left: 75%; }
-    .rose.r5 { top: 45%; left: 50%; }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      padding: 40px;
-      background-color: #1f1f1f;
-    }
-    .product {
-      background-color: #292929;
-      border: 1px solid #333;
-      border-radius: 8px;
-      padding: 20px;
       text-align: center;
-    }
-    .product img {
-      max-width: 100%;
-      border-radius: 5px;
-    }
-    .product h3 {
-      margin: 10px 0 5px;
-      color: #ff4444;
-    }
-    .product p {
-      color: #aaa;
-    }
-    footer {
-      background-color: #111;
-      color: #888;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <a href="index.html">
-        <img src="s1rix-rose-logo.png" alt="S1RIX Rose Logo">
-      </a>
-    </div>
-  </header>
 
-  <section class="hero">
-    <h1>The Rose Collection</h1>
-    <p>Luxury streetwear inspired by thorns, roses, and timeless design.</p>
-  </section>
+  <div class="vine-container">
+    <img class="vine" src="https://i.ibb.co/BLDz0GK/vine-grow.png" alt="Vine growing">
+  </div>
 
-  <section class="garden">
-    <div class="rose r1"></div>
-    <div class="rose r2"></div>
-    <div class="rose r3"></div>
-    <div class="rose r4"></div>
-    <div class="rose r5"></div>
-  </section>
+  <div class="section">
+    <h1>Scroll to Bloom the Garden</h1>
+  </div>
 
-  <section class="products">
-    <div class="product">
-      <img src="https://via.placeholder.com/300x300/8b0000/ffffff?text=Rose+Hoodie" alt="Rose Hoodie">
-      <h3>Rose Hoodie</h3>
-      <p>$80</p>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/300x300/8b0000/ffffff?text=Thorn+Tee" alt="Thorn Tee">
-      <h3>Thorn Tee</h3>
-      <p>$45</p>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/300x300/8b0000/ffffff?text=Petal+Pants" alt="Petal Pants">
-      <h3>Petal Pants</h3>
-      <p>$70</p>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 S1RIX. All rights reserved.
-  </footer>
+  <div class="section">
+    <h1>The Rose Collection Awakens</h1>
+  </div>
 
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.utils.toArray('.rose').forEach((rose, index) => {
-      gsap.fromTo(rose,
-        { opacity: 0, scale: 0.3 },
-        {
-          opacity: 1,
-          scale: 1,
-          scrollTrigger: {
-            trigger: ".garden",
-            start: "top bottom-=" + index * 50,
-            end: "bottom top+=100",
-            scrub: true,
-          }
-        }
-      );
-    });
+    gsap.fromTo(".vine",
+      { scaleY: 0 },
+      {
+        scaleY: 1,
+        scrollTrigger: {
+          trigger: ".section",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+          pin: false,
+        },
+        ease: "power2.out"
+      }
+    );
   </script>
+
 </body>
 </html>
